@@ -1,9 +1,7 @@
 package prog
 
-import prog.IO.{ReadFromFile, WriteToFile}
-import prog.Model.{Flat, FlatReader}
-
 import scala.collection.mutable
+import prog.Client._
 
 
 object ConsoleHandler {

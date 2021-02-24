@@ -9,7 +9,7 @@ import scala.collection.mutable
 
 object Server {
   val start: Date = Calendar.getInstance().getTime
-  var collection = mutable.ArrayDeque[Flat]()
+  var collection = mutable.ArrayDeque[Flat]() // : mutable.Seq[Flat]
 
   def main(args: Array[String]): Unit = {
 

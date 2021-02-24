@@ -11,7 +11,7 @@ class Flat(val id: Int = IdGenerator.getId, name: String, coordinates: Coordinat
            creationDate: LocalDate = java.time.LocalDate.now, area: Float, numberOfRooms : Int,
            furnish: Furnish = Furnish.NONE, view: View, transport: Transport = Transport.NONE, house: House, legal: Boolean = true) {
   if (id <= 0) throw new IllegalArgumentException("id must be more than 0")
-//  if (legal && collection.exists(f => f.id_() == id)) throw new IllegalArgumentException("id already in use, can't create this flat")
+  //  if (legal && collection.exists(f => f.id_() == id)) throw new IllegalArgumentException("id already in use, can't create this flat")
   if (name == null) throw new IllegalArgumentException("name can't be null")
   if (name.isEmpty) throw new IllegalArgumentException("name must be longer than 0")
   if (coordinates == null) throw new IllegalArgumentException("coordinates can't be null")
