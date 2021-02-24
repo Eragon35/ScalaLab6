@@ -1,6 +1,6 @@
 package prog.Model
 
-import prog.Main.collection
+import .collection
 import prog.Model.Furnish.Furnish
 import prog.Model.Transport.Transport
 import prog.Model.View.View

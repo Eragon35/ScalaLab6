@@ -1,7 +1,6 @@
 package prog
 
 import prog.IO.{ReadFromFile, WriteToFile}
-import Main.{collection, start}
 import prog.Model.{Flat, FlatReader}
 
 import scala.collection.mutable
@@ -27,7 +26,7 @@ object ConsoleHandler {
         case "update" => val updateCommand = command(1).trim.split(" ", 2)
           val id: Int = updateCommand(0).trim.toInt
           val flat: Flat = FlatReader.stringToFlat(updateCommand(1).trim, id)
-          collection.update(collection.indexOf(collection.find(f => f.id_() == id).get), flat)
+          collection.update(collection.indexWhere(f => f.id_() == id), flat)
         case "remove_by_id" => collection.removeFirst(f => f.id_() == command(1).trim.toInt) match {
           case Some(i) => println(s"\tDelete:\n$i")
           case None => println("\tElement with such id doesn't exist") }
