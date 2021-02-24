@@ -1,6 +1,6 @@
 package prog.Model
 
-import .collection
+import prog.Server.collection
 
 object IdGenerator {
   private var id = 0
