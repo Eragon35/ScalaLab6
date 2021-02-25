@@ -2,7 +2,6 @@ package prog.Model
 
 import java.time.LocalDate
 import scala.xml.Node
-import prog.Model.Flat
 
 /**
  * parse xml node

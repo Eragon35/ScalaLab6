@@ -1,6 +1,7 @@
 package prog.IO
 
 import java.io.{FileOutputStream, OutputStreamWriter}
+import prog.Server._
 
 object WriteToFile {
 

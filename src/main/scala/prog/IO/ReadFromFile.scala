@@ -2,6 +2,7 @@ package prog.IO
 
 import prog.{ConsoleHandler, FileChecker}
 import prog.Model.FlatReader
+import prog.Server._
 
 import java.io.{BufferedInputStream, DataInputStream, File, FileInputStream}
 import scala.xml.XML
