@@ -2,6 +2,8 @@ package prog
 
 import scala.collection.mutable
 import prog.Client._
+import prog.ConnectionUtils.ConsoleCommand
+import prog.Model.FlatReader
 
 
 object ConsoleHandler {
@@ -20,29 +22,34 @@ object ConsoleHandler {
         case "show" =>
           if (collection.isEmpty) println("\tCollection is empty")
           else collection.foreach(f => println(f))
-        case "add" =>  // send to server
-        //          collection.addOne(FlatReader.stringToFlat(command(1).trim))
-        case "update" =>  // send to server
-          //          val updateCommand = command(1).trim.split(" ", 2)
-//          val id: Int = updateCommand(0).trim.toInt
-//          val flat: Flat = FlatReader.stringToFlat(updateCommand(1).trim, id)
+        case "add" =>
+          request.command_(ConsoleCommand.add)
+          request.flat_(FlatReader.stringToFlat(command(1).trim))
+        case "update" =>
+          request.command_(ConsoleCommand.update)
+          val updateCommand = command(1).trim.split(" ", 2)
+          val id = updateCommand(0).trim.toInt
+          request.number_(id)
+          request.flat_(FlatReader.stringToFlat(updateCommand(1).trim, id))
 //          collection.update(collection.indexWhere(f => f.id_() == id), flat)
-        case "remove_by_id" =>  // send to server
+        case "remove_by_id" =>
+          request.command_(ConsoleCommand.remove_by_id)
+          request.number_(command(1).trim.toInt)
         //          collection.removeFirst(f => f.id_() == command(1).trim.toInt) match {
 //          case Some(i) => println(s"\tDelete:\n$i")
 //          case None => println("\tElement with such id doesn't exist") }
-        case "clear" => // send to server
-//          collection.clear()
-//          println("\tCollection is cleared")
-        case "execute_script" => // send to server
+        case "clear" => request.command_(ConsoleCommand.clear)
+        case "execute_script" => // TODO: rework readCommands
 //          ReadFromFile.readCommands(command(1).trim)
         case "exit" => sys.exit()
-        case "remove_head" =>  // send to server
+        case "remove_head" =>  request.command_(ConsoleCommand.remove_head)
         //          println("\tDelete:" + collection.remove(0))
-        case "remove_greater" =>  // send to server
+        case "remove_greater" =>  request.command_(ConsoleCommand.remove_greater)
         //          println("\tDelete " + collection.removeAll(f => f.hashCode() > FlatReader.stringToFlat(command(1).trim).hashCode()).size + " elements")
         case "history" => history.foreach(line => println(s"\t$line"))
-        case "remove_all_by_number_of_rooms" =>  // send to server
+        case "remove_all_by_number_of_rooms" =>
+          request.command_(ConsoleCommand.remove_all_by_number_of_rooms)
+          request.number_(command(1).trim.toInt)
         //          println("\tDelete " + collection.removeAll(f => f.numberOfRooms_() == command(1).trim.toInt).size + " elements")
         case "count_by_number_of_rooms" => println("\t" + collection.count(f => f.numberOfRooms_() == command(1).trim.toInt))
         case "print_field_descending_view" =>
