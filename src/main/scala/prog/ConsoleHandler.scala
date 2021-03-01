@@ -31,26 +31,19 @@ object ConsoleHandler {
           val id = updateCommand(0).trim.toInt
           request.number_(id)
           request.flat_(FlatReader.stringToFlat(updateCommand(1).trim, id))
-//          collection.update(collection.indexWhere(f => f.id_() == id), flat)
         case "remove_by_id" =>
           request.command_(ConsoleCommand.remove_by_id)
           request.number_(command(1).trim.toInt)
-        //          collection.removeFirst(f => f.id_() == command(1).trim.toInt) match {
-//          case Some(i) => println(s"\tDelete:\n$i")
-//          case None => println("\tElement with such id doesn't exist") }
         case "clear" => request.command_(ConsoleCommand.clear)
         case "execute_script" => // TODO: rework readCommands
 //          ReadFromFile.readCommands(command(1).trim)
         case "exit" => sys.exit()
         case "remove_head" =>  request.command_(ConsoleCommand.remove_head)
-        //          println("\tDelete:" + collection.remove(0))
         case "remove_greater" =>  request.command_(ConsoleCommand.remove_greater)
-        //          println("\tDelete " + collection.removeAll(f => f.hashCode() > FlatReader.stringToFlat(command(1).trim).hashCode()).size + " elements")
         case "history" => history.foreach(line => println(s"\t$line"))
         case "remove_all_by_number_of_rooms" =>
           request.command_(ConsoleCommand.remove_all_by_number_of_rooms)
           request.number_(command(1).trim.toInt)
-        //          println("\tDelete " + collection.removeAll(f => f.numberOfRooms_() == command(1).trim.toInt).size + " elements")
         case "count_by_number_of_rooms" => println("\t" + collection.count(f => f.numberOfRooms_() == command(1).trim.toInt))
         case "print_field_descending_view" =>
           if (collection.isEmpty) println("\tCollection is empty, can't show you anything")
